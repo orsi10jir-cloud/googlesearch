@@ -70,6 +70,39 @@ Já to asi nemám naklonované, tak udělej to, kdyby ses potřeboval dostat k P
 a VS Code, tak to bude hotové, udělej co potřebuješ.
 ```
 
+### Prompt 4 – oprava chyb v terminálu (git)
+
+```
+(vložený výpis terminálu: git init, "Author identity unknown",
+ "src refspec main does not match any")
+Tohle je výpis terminálu.
+```
+
+### Prompt 5 – nahrání všech stránek na GitHub
+
+```
+(snímek obrazovky VS Code po úspěšném git push)
+Tak kde a co, jak to mám udělat?
+```
+
+### Prompt 6 – odkaz na portfolio
+
+```
+https://github.com/orsi10jir-cloud
+```
+
+### Prompt 7 – kontrola a dokončení
+
+```
+Tak to udělej ty, co můžeš, a já pak udělám to natáčení.
+```
+
+### Prompt 8 – oprava odkazu na portfolio
+
+```
+A to portfolio musí být tohle: https://orsi10jir-cloud.github.io/EPOX/
+```
+
 ## 4. Prohlášení
 
 Kód projektu byl vygenerován s pomocí AI (Claude, Anthropic) na základě výše uvedených promptů.
