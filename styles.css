@@ -1,0 +1,412 @@
+/* ==========================================================
+   Google Search – vlastní front-end (CS50 Web, Project 0)
+   Společný stylopis pro všechny stránky projektu
+   ========================================================== */
+
+/* ---------- Základ ---------- */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    color: #202124;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+
+a {
+    color: #1a0dab;
+}
+
+main {
+    flex: 1 0 auto;
+    width: 100%;
+}
+
+/* Vizuálně skrytý text – zůstává čitelný pro čtečky obrazovky */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    border: 0;
+    white-space: nowrap;
+}
+
+/* ---------- Horní lišta (pravý horní roh) ---------- */
+.top-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 6px 18px;
+    padding: 16px 24px;
+}
+
+.top-nav a {
+    color: #202124;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.top-nav a:hover,
+.top-nav a:focus {
+    text-decoration: underline;
+}
+
+.top-nav .nav-pill {
+    padding: 8px 14px;
+    border-radius: 4px;
+    background-color: #1a73e8;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.top-nav .nav-pill:hover,
+.top-nav .nav-pill:focus {
+    background-color: #1765cc;
+    text-decoration: none;
+}
+
+/* ---------- Vlastní textový nadpis (wordmark) ---------- */
+.wordmark {
+    margin: 0 0 26px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 64px;
+    font-weight: normal;
+    letter-spacing: -2px;
+    color: #202124;
+}
+
+.wordmark .accent {
+    color: #1a73e8;
+}
+
+.wordmark small {
+    display: block;
+    margin-top: 4px;
+    font-size: 16px;
+    letter-spacing: 0;
+    color: #5f6368;
+}
+
+/* ---------- Hlavní vyhledávání (index + obrázky) ---------- */
+.search-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12vh 16px 40px;
+}
+
+.search-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.search-box {
+    width: 100%;
+    max-width: 584px;
+    height: 46px;
+    padding: 0 20px;
+    border: 1px solid #dfe1e5;
+    border-radius: 24px;
+    font-size: 16px;
+    color: #202124;
+    outline: none;
+}
+
+.search-box:hover,
+.search-box:focus {
+    border-color: #dfe1e5;
+    box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 28px;
+}
+
+.btn {
+    height: 36px;
+    min-width: 54px;
+    padding: 0 16px;
+    border: 1px solid #f8f9fa;
+    border-radius: 4px;
+    background-color: #f8f9fa;
+    color: #3c4043;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    border-color: #dadce0;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    color: #202124;
+}
+
+.btn:focus {
+    border-color: #4285f4;
+    outline: none;
+}
+
+.btn-blue {
+    border-color: #1a73e8;
+    background-color: #1a73e8;
+    color: #ffffff;
+    padding: 0 24px;
+    font-weight: bold;
+}
+
+.btn-blue:hover {
+    border-color: #1765cc;
+    background-color: #1765cc;
+    color: #ffffff;
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3);
+}
+
+.hint {
+    margin-top: 26px;
+    color: #5f6368;
+    font-size: 13px;
+    text-align: center;
+}
+
+/* ---------- Pokročilé vyhledávání ---------- */
+.page-header {
+    padding: 8px 24px 16px;
+    border-bottom: 1px solid #dadce0;
+}
+
+.page-header h1 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: normal;
+    color: #202124;
+}
+
+.advanced-wrap {
+    max-width: 960px;
+    padding: 24px;
+}
+
+.advanced-wrap h2 {
+    margin: 0 0 20px;
+    font-size: 18px;
+    font-weight: normal;
+    color: #202124;
+}
+
+.advanced-grid {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    align-items: center;
+    gap: 16px 20px;
+}
+
+.advanced-grid label {
+    color: #202124;
+    font-size: 14px;
+}
+
+.advanced-input {
+    width: 100%;
+    max-width: 480px;
+    height: 36px;
+    padding: 0 10px;
+    border: 1px solid #dadce0;
+    border-radius: 4px;
+    font-size: 14px;
+    justify-self: start;
+}
+
+.advanced-input:focus {
+    border-color: #1a73e8;
+    outline: none;
+}
+
+.advanced-actions {
+    max-width: 720px;
+    margin-top: 28px;
+    text-align: right;
+}
+
+/* ---------- Stránka s formulářovými prvky ---------- */
+.forms-wrap {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 24px 40px;
+}
+
+.notice {
+    margin: 20px 0;
+    padding: 14px 18px;
+    border-left: 5px solid #f9ab00;
+    border-radius: 4px;
+    background-color: #fef7e0;
+    color: #3c4043;
+}
+
+.notice strong {
+    color: #b06000;
+}
+
+.demo-form fieldset {
+    margin: 0 0 22px;
+    padding: 16px 20px 20px;
+    border: 1px solid #dadce0;
+    border-radius: 8px;
+}
+
+.demo-form legend {
+    padding: 0 8px;
+    color: #1a73e8;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.field-grid {
+    display: grid;
+    grid-template-columns: 210px 1fr;
+    align-items: center;
+    gap: 12px 16px;
+}
+
+.demo-form input[type="text"],
+.demo-form input[type="password"],
+.demo-form input[type="email"],
+.demo-form input[type="tel"],
+.demo-form input[type="url"],
+.demo-form input[type="search"],
+.demo-form input[type="number"],
+.demo-form input[type="date"],
+.demo-form input[type="time"],
+.demo-form input[type="datetime-local"],
+.demo-form input[type="month"],
+.demo-form input[type="week"],
+.demo-form select,
+.demo-form textarea {
+    width: 100%;
+    max-width: 420px;
+    padding: 7px 10px;
+    border: 1px solid #dadce0;
+    border-radius: 4px;
+    background-color: #ffffff;
+    color: #202124;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+
+.demo-form input:focus,
+.demo-form select:focus,
+.demo-form textarea:focus {
+    border-color: #1a73e8;
+    outline: none;
+}
+
+.demo-form input[readonly] {
+    background-color: #f1f3f4;
+}
+
+.choice-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 18px;
+}
+
+.disabled-set {
+    background-color: #f8f9fa;
+    color: #80868b;
+}
+
+.not-working {
+    color: #80868b;
+    font-size: 12px;
+    font-style: italic;
+}
+
+.demo-form .btn[disabled],
+.demo-form input[type="submit"][disabled] {
+    background-color: #e8eaed;
+    border-color: #e8eaed;
+    color: #9aa0a6;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* ---------- Patička ---------- */
+.site-footer {
+    flex-shrink: 0;
+    background-color: #f2f2f2;
+    border-top: 1px solid #dadce0;
+    color: #70757a;
+    font-size: 13px;
+}
+
+.site-footer ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 24px;
+    margin: 0;
+    padding: 14px 24px 6px;
+    list-style: none;
+}
+
+.site-footer a {
+    color: #70757a;
+    text-decoration: none;
+}
+
+.site-footer a:hover,
+.site-footer a:focus {
+    text-decoration: underline;
+}
+
+.site-footer p {
+    margin: 0;
+    padding: 0 24px 14px;
+    text-align: center;
+}
+
+/* ---------- Mobil ---------- */
+@media (max-width: 640px) {
+    .wordmark {
+        font-size: 46px;
+    }
+
+    .advanced-grid,
+    .field-grid {
+        grid-template-columns: 1fr;
+        gap: 6px;
+    }
+
+    .advanced-grid .advanced-input,
+    .field-grid input,
+    .field-grid select,
+    .field-grid textarea {
+        margin-bottom: 10px;
+    }
+
+    .advanced-actions {
+        text-align: center;
+    }
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Google Advanced Search – vlastní front-end</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <!-- Pravý horní roh: odkaz zpět na Google Search -->
+        <nav class="top-nav" aria-label="Hlavní navigace">
+            <a href="index.html">Google Search</a>
+            <a href="images.html">Image Search</a>
+            <a href="forms.html">Formuláře</a>
+            <a class="nav-pill" href="https://github.com/orsi10jir-cloud" target="_blank" rel="noopener">Portfolio</a>
+        </nav>
+
+        <header class="page-header">
+            <h1>Advanced Search</h1>
+        </header>
+
+        <main class="advanced-wrap">
+            <form action="https://www.google.com/search" method="get">
+                <h2>Find pages with…</h2>
+
+                <!-- 4 pole pod sebou, textová pole zarovnaná vlevo do jednoho sloupce -->
+                <div class="advanced-grid">
+                    <!-- as_q = všechna tato slova -->
+                    <label for="as_q">all these words:</label>
+                    <input class="advanced-input" type="text" id="as_q" name="as_q">
+
+                    <!-- as_epq = přesné slovo nebo fráze (exact phrase) -->
+                    <label for="as_epq">this exact word or phrase:</label>
+                    <input class="advanced-input" type="text" id="as_epq" name="as_epq">
+
+                    <!-- as_oq = kterékoli z těchto slov (OR) -->
+                    <label for="as_oq">any of these words:</label>
+                    <input class="advanced-input" type="text" id="as_oq" name="as_oq">
+
+                    <!-- as_eq = žádné z těchto slov (exclude) -->
+                    <label for="as_eq">none of these words:</label>
+                    <input class="advanced-input" type="text" id="as_eq" name="as_eq">
+                </div>
+
+                <div class="advanced-actions">
+                    <!-- modré tlačítko s bílým textem (třída btn-blue) -->
+                    <input class="btn btn-blue" type="submit" value="Advanced Search">
+                </div>
+            </form>
+        </main>
+
+        <footer class="site-footer">
+            <ul>
+                <li><a href="https://validator.w3.org/nu/?doc=https://orsi10jir-cloud.github.io/googlesearch/advanced.html" target="_blank" rel="noopener">Validace HTML</a></li>
+                <li><a href="https://jigsaw.w3.org/css-validator/validator?uri=https://orsi10jir-cloud.github.io/googlesearch/advanced.html" target="_blank" rel="noopener">Validace CSS</a></li>
+                <li><a href="https://github.com/orsi10jir-cloud/googlesearch/blob/main/citace.md" target="_blank" rel="noopener">Citace a zdroje</a></li>
+                <li><a href="https://github.com/orsi10jir-cloud" target="_blank" rel="noopener">Moje portfolio</a></li>
+            </ul>
+            <p>© 2026 Jiří · Projekt podle CS50 Web – Project 0: Search</p>
+        </footer>
+    </body>
+</html>

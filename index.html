@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Google Search – vlastní front-end</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <!-- Pravý horní roh: odkazy na Image Search a Advanced Search -->
+        <nav class="top-nav" aria-label="Hlavní navigace">
+            <a href="images.html">Image Search</a>
+            <a href="advanced.html">Advanced Search</a>
+            <a href="forms.html">Formuláře</a>
+            <a class="nav-pill" href="https://github.com/orsi10jir-cloud" target="_blank" rel="noopener">Portfolio</a>
+        </nav>
+
+        <main class="search-page">
+            <h1 class="wordmark">Jiří<span class="accent">Search</span><small>vlastní front-end pro Google Search</small></h1>
+
+            <!-- action: formulář se odešle na adresu Google vyhledávání (metoda GET) -->
+            <form class="search-form" action="https://www.google.com/search" method="get">
+                <label class="visually-hidden" for="q">Hledaný výraz</label>
+                <!-- name="q" = parametr dotazu (query), Google z něj bere hledaný text -->
+                <input class="search-box" type="text" id="q" name="q" autocomplete="off" autofocus required>
+
+                <div class="buttons">
+                    <input class="btn" type="submit" value="Google Search">
+                    <!-- name="btnI" = "I'm Feeling Lucky" – Google přesměruje přímo na první výsledek -->
+                    <input class="btn" type="submit" name="btnI" value="I'm Feeling Lucky">
+                </div>
+            </form>
+
+            <p class="hint">Tip: „I'm Feeling Lucky“ vás přesměruje rovnou na první výsledek (Google může nejdřív zobrazit upozornění na přesměrování).</p>
+        </main>
+
+        <footer class="site-footer">
+            <ul>
+                <li><a href="https://validator.w3.org/nu/?doc=https://orsi10jir-cloud.github.io/googlesearch/index.html" target="_blank" rel="noopener">Validace HTML</a></li>
+                <li><a href="https://jigsaw.w3.org/css-validator/validator?uri=https://orsi10jir-cloud.github.io/googlesearch/index.html" target="_blank" rel="noopener">Validace CSS</a></li>
+                <li><a href="https://github.com/orsi10jir-cloud/googlesearch/blob/main/citace.md" target="_blank" rel="noopener">Citace a zdroje</a></li>
+                <li><a href="https://github.com/orsi10jir-cloud" target="_blank" rel="noopener">Moje portfolio</a></li>
+            </ul>
+            <p>© 2026 Jiří · Projekt podle CS50 Web – Project 0: Search</p>
+        </footer>
+    </body>
+</html>

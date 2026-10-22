@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Google Image Search – vlastní front-end</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <!-- Pravý horní roh: odkaz zpět na Google Search -->
+        <nav class="top-nav" aria-label="Hlavní navigace">
+            <a href="index.html">Google Search</a>
+            <a href="advanced.html">Advanced Search</a>
+            <a href="forms.html">Formuláře</a>
+            <a class="nav-pill" href="https://github.com/orsi10jir-cloud" target="_blank" rel="noopener">Portfolio</a>
+        </nav>
+
+        <main class="search-page">
+            <h1 class="wordmark">Jiří<span class="accent">Images</span><small>vyhledávání obrázků</small></h1>
+
+            <form class="search-form" action="https://www.google.com/search" method="get">
+                <label class="visually-hidden" for="q">Hledaný obrázek</label>
+                <!-- name="q" = hledaný výraz -->
+                <input class="search-box" type="text" id="q" name="q" autocomplete="off" autofocus required>
+                <!-- skryté pole tbm=isch = Google hledá v obrázcích (image search) -->
+                <input type="hidden" name="tbm" value="isch">
+
+                <div class="buttons">
+                    <input class="btn" type="submit" value="Search Images">
+                </div>
+            </form>
+        </main>
+
+        <footer class="site-footer">
+            <ul>
+                <li><a href="https://validator.w3.org/nu/?doc=https://orsi10jir-cloud.github.io/googlesearch/images.html" target="_blank" rel="noopener">Validace HTML</a></li>
+                <li><a href="https://jigsaw.w3.org/css-validator/validator?uri=https://orsi10jir-cloud.github.io/googlesearch/images.html" target="_blank" rel="noopener">Validace CSS</a></li>
+                <li><a href="https://github.com/orsi10jir-cloud/googlesearch/blob/main/citace.md" target="_blank" rel="noopener">Citace a zdroje</a></li>
+                <li><a href="https://github.com/orsi10jir-cloud" target="_blank" rel="noopener">Moje portfolio</a></li>
+            </ul>
+            <p>© 2026 Jiří · Projekt podle CS50 Web – Project 0: Search</p>
+        </footer>
+    </body>
+</html>

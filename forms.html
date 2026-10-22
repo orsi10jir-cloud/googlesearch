@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Formulářové prvky – ukázka</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <nav class="top-nav" aria-label="Hlavní navigace">
+            <a href="index.html">Google Search</a>
+            <a href="images.html">Image Search</a>
+            <a href="advanced.html">Advanced Search</a>
+            <a class="nav-pill" href="https://github.com/orsi10jir-cloud" target="_blank" rel="noopener">Portfolio</a>
+        </nav>
+
+        <header class="page-header">
+            <h1>Ukázka formulářových prvků</h1>
+        </header>
+
+        <main class="forms-wrap">
+            <p class="notice"><strong>Nefunkční ukázka:</strong> tento formulář slouží pouze k předvedení různých typů formulářových prvků. Nikam neodesílá žádná data a tlačítko pro odeslání je vypnuté.</p>
+
+            <form class="demo-form" action="#" method="post">
+
+                <!-- 1) Textová pole -->
+                <fieldset>
+                    <legend>Osobní údaje (textová pole)</legend>
+                    <div class="field-grid">
+                        <label for="jmeno">Jméno (text, required):</label>
+                        <input type="text" id="jmeno" name="jmeno" placeholder="Jan Novák" maxlength="40" required>
+
+                        <label for="prezdivka">Přezdívka (pattern):</label>
+                        <input type="text" id="prezdivka" name="prezdivka" pattern="[A-Za-z0-9_]{3,15}" title="3–15 znaků: písmena, čísla, podtržítko" placeholder="orsi_cz">
+
+                        <label for="heslo">Heslo (password):</label>
+                        <input type="password" id="heslo" name="heslo" autocomplete="new-password">
+
+                        <label for="skola">Škola (readonly):</label>
+                        <input type="text" id="skola" name="skola" value="Střední škola" readonly>
+
+                        <label for="hledat">Hledat (search):</label>
+                        <input type="search" id="hledat" name="hledat" placeholder="Hledat…">
+
+                        <label for="oblibene">Oblíbený prohlížeč (datalist):</label>
+                        <input type="text" id="oblibene" name="oblibene" list="prohlizece">
+                    </div>
+                    <datalist id="prohlizece">
+                        <option value="Chrome"></option>
+                        <option value="Firefox"></option>
+                        <option value="Edge"></option>
+                        <option value="Safari"></option>
+                        <option value="Opera"></option>
+                    </datalist>
+                </fieldset>
+
+                <!-- 2) Kontaktní pole -->
+                <fieldset>
+                    <legend>Kontakt</legend>
+                    <div class="field-grid">
+                        <label for="email">E-mail (email):</label>
+                        <input type="email" id="email" name="email" placeholder="jan@example.com" autocomplete="email">
+
+                        <label for="telefon">Telefon (tel):</label>
+                        <input type="tel" id="telefon" name="telefon" placeholder="+420 123 456 789" autocomplete="tel">
+
+                        <label for="web">Web (url):</label>
+                        <input type="url" id="web" name="web" placeholder="https://…">
+                    </div>
+                </fieldset>
+
+                <!-- 3) Čísla a rozsahy -->
+                <fieldset>
+                    <legend>Čísla a rozsahy</legend>
+                    <div class="field-grid">
+                        <label for="vek">Věk (number):</label>
+                        <input type="number" id="vek" name="vek" min="10" max="99" step="1" value="17">
+
+                        <label for="hlasitost">Hlasitost (range):</label>
+                        <div>
+                            <input type="range" id="hlasitost" name="hlasitost" min="0" max="100" step="5" value="60">
+                            <output id="hlasitost-hodnota" for="hlasitost">60</output> %
+                        </div>
+
+                        <label for="postup">Postup projektu (progress):</label>
+                        <progress id="postup" max="100" value="70">70 %</progress>
+
+                        <label for="disk">Zaplnění disku (meter):</label>
+                        <meter id="disk" min="0" max="100" low="40" high="80" optimum="20" value="65">65 %</meter>
+                    </div>
+                </fieldset>
+
+                <!-- 4) Datum a čas -->
+                <fieldset>
+                    <legend>Datum a čas</legend>
+                    <div class="field-grid">
+                        <label for="datum">Datum (date):</label>
+                        <input type="date" id="datum" name="datum">
+
+                        <label for="cas">Čas (time):</label>
+                        <input type="time" id="cas" name="cas">
+
+                        <label for="termin">Datum a čas (datetime-local):</label>
+                        <input type="datetime-local" id="termin" name="termin">
+
+                        <label for="mesic">Měsíc (month):</label>
+                        <input type="month" id="mesic" name="mesic">
+
+                        <label for="tyden">Týden (week):</label>
+                        <input type="week" id="tyden" name="tyden">
+                    </div>
+                </fieldset>
+
+                <!-- 5) Výběry: select, radio, checkbox -->
+                <fieldset>
+                    <legend>Volby</legend>
+                    <div class="field-grid">
+                        <label for="trida">Třída (select):</label>
+                        <select id="trida" name="trida">
+                            <option value="">– vyberte –</option>
+                            <option value="1">1. ročník</option>
+                            <option value="2">2. ročník</option>
+                            <option value="3" selected>3. ročník</option>
+                            <option value="4">4. ročník</option>
+                        </select>
+
+                        <label for="jazyk">Programovací jazyk (optgroup):</label>
+                        <select id="jazyk" name="jazyk">
+                            <optgroup label="Web">
+                                <option>HTML</option>
+                                <option>CSS</option>
+                                <option>JavaScript</option>
+                            </optgroup>
+                            <optgroup label="Backend">
+                                <option>Python</option>
+                                <option>PHP</option>
+                                <option>C#</option>
+                            </optgroup>
+                        </select>
+
+                        <label for="zajmy">Zájmy (select multiple):</label>
+                        <select id="zajmy" name="zajmy" multiple size="4">
+                            <option>Programování</option>
+                            <option>Hry</option>
+                            <option>Sport</option>
+                            <option>Hudba</option>
+                            <option>Drony</option>
+                        </select>
+                    </div>
+
+                    <p>Pohlaví (radio):</p>
+                    <div class="choice-group">
+                        <label><input type="radio" name="pohlavi" value="muz" checked> muž</label>
+                        <label><input type="radio" name="pohlavi" value="zena"> žena</label>
+                        <label><input type="radio" name="pohlavi" value="neuvedeno"> neuvádět</label>
+                    </div>
+
+                    <p>Používám (checkbox):</p>
+                    <div class="choice-group">
+                        <label><input type="checkbox" name="nastroje" value="vscode" checked> VS Code</label>
+                        <label><input type="checkbox" name="nastroje" value="github" checked> GitHub</label>
+                        <label><input type="checkbox" name="nastroje" value="figma"> Figma</label>
+                        <label><input type="checkbox" name="nastroje" value="ai"> AI asistent</label>
+                    </div>
+
+                    <p>
+                        <label><input type="checkbox" name="souhlas" value="ano" required> Souhlasím s podmínkami (povinný checkbox)</label>
+                    </p>
+                </fieldset>
+
+                <!-- 6) Soubory a barvy -->
+                <fieldset>
+                    <legend>Soubory a barvy</legend>
+                    <div class="field-grid">
+                        <label for="foto">Profilová fotka (file):</label>
+                        <input type="file" id="foto" name="foto" accept="image/*">
+
+                        <label for="prilohy">Přílohy (file multiple):</label>
+                        <input type="file" id="prilohy" name="prilohy" accept=".pdf,.docx" multiple>
+
+                        <label for="barva">Oblíbená barva (color):</label>
+                        <input type="color" id="barva" name="barva" value="#1a73e8">
+                    </div>
+                    <!-- hidden = skryté pole, uživatel ho nevidí -->
+                    <input type="hidden" name="zdroj" value="formular-ukazka">
+                </fieldset>
+
+                <!-- 7) Textarea -->
+                <fieldset>
+                    <legend>Zpráva</legend>
+                    <div class="field-grid">
+                        <label for="zprava">Zpráva (textarea):</label>
+                        <textarea id="zprava" name="zprava" rows="5" cols="40" maxlength="500" placeholder="Napište zprávu…"></textarea>
+                    </div>
+                </fieldset>
+
+                <!-- 8) Zakázaná skupina -->
+                <fieldset class="disabled-set" disabled>
+                    <legend>Zakázaná skupina (fieldset disabled)</legend>
+                    <div class="field-grid">
+                        <label for="kupon">Slevový kód:</label>
+                        <input type="text" id="kupon" name="kupon" placeholder="nedostupné">
+                    </div>
+                </fieldset>
+
+                <!-- 9) Tlačítka -->
+                <fieldset>
+                    <legend>Tlačítka</legend>
+                    <div class="buttons">
+                        <input class="btn" type="submit" value="Odeslat (submit)" disabled>
+                        <input class="btn" type="reset" value="Vymazat (reset)">
+                        <input class="btn" type="button" value="Tlačítko (input button)">
+                        <button class="btn btn-blue" type="button">Element &lt;button&gt;</button>
+                        <button class="btn" type="reset">Reset přes &lt;button&gt;</button>
+                        <button class="btn" type="submit" disabled>Submit přes &lt;button&gt;</button>
+                    </div>
+                    <p class="not-working">Odesílací tlačítka jsou šedivá a vypnutá – formulář je nefunkční ukázka.</p>
+                </fieldset>
+            </form>
+        </main>
+
+        <footer class="site-footer">
+            <ul>
+                <li><a href="https://validator.w3.org/nu/?doc=https://orsi10jir-cloud.github.io/googlesearch/forms.html" target="_blank" rel="noopener">Validace HTML</a></li>
+                <li><a href="https://jigsaw.w3.org/css-validator/validator?uri=https://orsi10jir-cloud.github.io/googlesearch/forms.html" target="_blank" rel="noopener">Validace CSS</a></li>
+                <li><a href="https://github.com/orsi10jir-cloud/googlesearch/blob/main/citace.md" target="_blank" rel="noopener">Citace a zdroje</a></li>
+                <li><a href="https://github.com/orsi10jir-cloud" target="_blank" rel="noopener">Moje portfolio</a></li>
+            </ul>
+            <p>© 2026 Jiří · Projekt podle CS50 Web – Project 0: Search</p>
+        </footer>
+    </body>
+</html>
