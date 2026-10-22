@@ -103,6 +103,14 @@ Tak to udělej ty, co můžeš, a já pak udělám to natáčení.
 A to portfolio musí být tohle: https://orsi10jir-cloud.github.io/EPOX/
 ```
 
+### Prompt 9 – portfolio jako rozcestník
+
+```
+Dobře, musíme udělat web nebo portfolio, ze kterého se půjde proklikat na další
+funkční weby a projekty, takže fakt nevím, jak to mám udělat.
+(odpověď: portfolio na hlavním webu https://orsi10jir-cloud.github.io/)
+```
+
 ## 4. Prohlášení
 
 Kód projektu byl vygenerován s pomocí AI (Claude, Anthropic) na základě výše uvedených promptů.
