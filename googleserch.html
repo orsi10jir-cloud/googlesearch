@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Search — ukázkový vyhledávač</title>
+	<style>
+		* { box-sizing: border-box; }
+		body { min-height: 100vh; margin: 0; display: flex; flex-direction: column; color: #202124; background: #fff; font-family: Arial, Helvetica, sans-serif; }
+		a { color: #1a0dab; }
+		.topbar { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 20px; padding: 16px 22px; }
+		.topbar a { color: #202124; font-size: 14px; text-decoration: none; }
+		.topbar a:hover { text-decoration: underline; }
+		main { flex: 1; }
+		.search-view { min-height: 70vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 32px 20px; }
+		h1 { margin: 0 0 28px; font-size: clamp(42px, 9vw, 76px); font-weight: 400; letter-spacing: -4px; color: #4285f4; }
+		h1 span:nth-child(2) { color: #ea4335; } h1 span:nth-child(3) { color: #fbbc05; } h1 span:nth-child(4) { color: #4285f4; } h1 span:nth-child(5) { color: #34a853; }
+		.search-form { width: min(580px, 100%); text-align: center; }
+		.search-box { width: 100%; height: 46px; padding: 0 20px; border: 1px solid #dfe1e5; border-radius: 24px; font: inherit; }
+		.search-box:hover, .search-box:focus { border-color: transparent; outline: none; box-shadow: 0 1px 6px #20212447; }
+		.buttons { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+		input[type="submit"], input[type="reset"], button { min-height: 36px; padding: 0 16px; border: 1px solid #f8f9fa; border-radius: 5px; background: #f8f9fa; color: #202124; font: 14px Arial, Helvetica, sans-serif; cursor: pointer; }
+		input[type="submit"]:hover, input[type="reset"]:hover, button:hover { border-color: #dadce0; }
+		.content-section { max-width: 900px; margin: 0 auto; padding: 48px 24px; border-top: 1px solid #eee; }
+		.content-section h2 { margin-top: 0; font-weight: 400; }
+		.advanced-grid, .form-grid { display: grid; grid-template-columns: minmax(180px, 250px) minmax(0, 1fr); gap: 14px 18px; align-items: center; }
+		.advanced-grid input, .form-grid input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]):not([type="file"]), .form-grid select, .form-grid textarea { width: 100%; min-height: 36px; border: 1px solid #dadce0; border-radius: 3px; padding: 7px 9px; font: inherit; }
+		.advanced-submit { display: flex; justify-content: flex-end; margin-top: 18px; }
+		.advanced-submit input { background: #1a73e8; border: 0; border-radius: 4px; color: #fff; padding: 0 24px; }
+		.advanced-submit input:hover { background: #1558b0; }
+		.notice { padding: 14px; margin-bottom: 22px; border: 1px solid #f1d58a; border-radius: 5px; background: #fff8e1; }
+		fieldset { margin: 18px 0; padding: 18px; border: 1px solid #dadce0; border-radius: 6px; }
+		legend { padding: 0 7px; color: #3c4043; }
+		.inline-options { display: flex; flex-wrap: wrap; gap: 12px; }
+		.inline-options label { display: inline-flex; align-items: center; gap: 5px; }
+		.form-grid textarea { min-height: 100px; }
+		.footer { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px 20px; padding: 18px; background: #f2f2f2; font-size: 12px; }
+		.footer a { color: #5f6368; }
+		.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+		@media (max-width: 560px) { .advanced-grid, .form-grid { grid-template-columns: 1fr; gap: 7px; } .content-section { padding: 38px 18px; } h1 { letter-spacing: -2px; } }
+	</style>
+</head>
+<body>
+	<nav class="topbar" aria-label="Hlavní navigace">
+		<a href="#search">Google Search</a><a href="#images">Image Search</a><a href="#advanced">Advanced Search</a><a href="#forms">Forms</a>
+		<a href="PORTFOLIO_URL" target="_blank" rel="noopener">Portfolio</a>
+	</nav>
+	<main>
+		<section class="search-view" id="search" aria-labelledby="search-title">
+			<h1 id="search-title" aria-label="Search"><span>S</span><span>e</span><span>a</span><span>r</span><span>c</span><span>h</span></h1>
+			<form class="search-form" action="https://www.google.com/search" method="get">
+				<label class="visually-hidden" for="query">Vyhledávací dotaz</label>
+				<input class="search-box" type="search" id="query" name="q" required autofocus>
+				<div class="buttons"><input type="submit" value="Google Search"><input type="submit" name="btnI" value="I'm Feeling Lucky"></div>
+			</form>
+		</section>
+		<section class="content-section" id="images" aria-labelledby="images-title">
+			<h2 id="images-title">Search Images</h2>
+			<form class="search-form" action="https://www.google.com/search" method="get">
+				<label for="image-query">Vyhledat obrázky</label>
+				<input class="search-box" type="search" id="image-query" name="q" required>
+				<!-- Parametr tbm=isch přepne výsledky na vyhledávání obrázků. -->
+				<input type="hidden" name="tbm" value="isch">
+				<div class="buttons"><input type="submit" value="Search Images"></div>
+			</form>
+		</section>
+		<section class="content-section" id="advanced" aria-labelledby="advanced-title">
+			<h2 id="advanced-title">Advanced Search</h2><h3>Find pages with…</h3>
+			<form action="https://www.google.com/search" method="get">
+				<div class="advanced-grid">
+					<label for="as-q">all these words:</label><input id="as-q" type="text" name="as_q">
+					<label for="as-epq">this exact word or phrase:</label><input id="as-epq" type="text" name="as_epq">
+					<label for="as-oq">any of these words:</label><input id="as-oq" type="text" name="as_oq">
+					<label for="as-eq">none of these words:</label><input id="as-eq" type="text" name="as_eq">
+				</div>
+				<div class="advanced-submit"><input type="submit" value="Advanced Search"></div>
+			</form>
+		</section>
+		<section class="content-section" id="forms" aria-labelledby="forms-title">
+			<h2 id="forms-title">Ukázka formulářových prvků</h2>
+			<p class="notice"><strong>Tento formulář je pouze ukázka a nikam neodesílá data.</strong> Odeslání je záměrně zakázané.</p>
+			<form action="#forms" method="get">
+				<fieldset><legend>Osobní údaje</legend><div class="form-grid">
+					<label for="demo-text">Text</label><input id="demo-text" type="text" placeholder="Jméno" maxlength="40" autocomplete="name">
+					<label for="demo-password">Heslo</label><input id="demo-password" type="password" autocomplete="new-password">
+					<label for="demo-number">Číslo (0–100)</label><input id="demo-number" type="number" min="0" max="100" step="1" value="25">
+					<label for="demo-readonly">Pouze pro čtení</label><input id="demo-readonly" type="text" value="Nelze upravit" readonly>
+					<label for="demo-pattern">Kód (3 velká písmena)</label><input id="demo-pattern" type="text" pattern="[A-Z]{3}" title="Zadejte přesně tři velká písmena" placeholder="ABC">
+				</div></fieldset>
+				<fieldset><legend>Kontakt</legend><div class="form-grid">
+					<label for="demo-email">E-mail</label><input id="demo-email" type="email" placeholder="jmeno@example.com" autocomplete="email">
+					<label for="demo-tel">Telefon</label><input id="demo-tel" type="tel" autocomplete="tel">
+					<label for="demo-url">Webová adresa</label><input id="demo-url" type="url" placeholder="https://example.com">
+					<label for="demo-search">Vyhledávání</label><input id="demo-search" type="search">
+					<label for="demo-list">Datalist</label><input id="demo-list" list="cities"><datalist id="cities"><option value="Praha"><option value="Brno"><option value="Ostrava"></datalist>
+				</div></fieldset>
+				<fieldset><legend>Datum a čas</legend><div class="form-grid">
+					<label for="demo-date">Datum</label><input id="demo-date" type="date">
+					<label for="demo-time">Čas</label><input id="demo-time" type="time">
+					<label for="demo-datetime">Datum a čas</label><input id="demo-datetime" type="datetime-local">
+					<label for="demo-month">Měsíc</label><input id="demo-month" type="month">
+					<label for="demo-week">Týden</label><input id="demo-week" type="week">
+				</div></fieldset>
+				<fieldset><legend>Volby</legend><div class="form-grid">
+					<span>Oblíbené barvy (checkbox)</span><div class="inline-options"><label><input id="color-blue" type="checkbox" name="color" value="blue" checked> Modrá</label><label><input id="color-green" type="checkbox" name="color" value="green"> Zelená</label><label><input id="color-red" type="checkbox" name="color" value="red"> Červená</label></div>
+					<span>Velikost (radio)</span><div class="inline-options"><label><input id="size-small" type="radio" name="size" value="small"> Malá</label><label><input id="size-large" type="radio" name="size" value="large" checked> Velká</label></div>
+					<label for="demo-select">Výběr</label><select id="demo-select"><option value="">Vyberte…</option><option>První možnost</option><option>Druhá možnost</option></select>
+					<label for="demo-multiple">Vícenásobný výběr</label><select id="demo-multiple" multiple><option>HTML</option><option>CSS</option><option>Accessibility</option></select>
+					<label for="demo-optgroup">Skupiny možností</label><select id="demo-optgroup"><optgroup label="Ovoce"><option>Jablko</option><option>Hruška</option></optgroup><optgroup label="Zelenina"><option>Mrkev</option></optgroup></select>
+					<label for="demo-range">Rozsah: <output id="range-output" for="demo-range">50</output></label><input id="demo-range" type="range" min="0" max="100" value="50">
+				</div></fieldset>
+				<fieldset><legend>Soubory a barvy</legend><div class="form-grid">
+					<label for="demo-color">Barva</label><input id="demo-color" type="color" value="#1a73e8">
+					<label for="demo-file">Soubory (více, obrázky)</label><input id="demo-file" type="file" multiple accept="image/*">
+					<label for="demo-disabled">Zakázané pole</label><input id="demo-disabled" type="text" value="Disabled" disabled>
+				</div></fieldset>
+				<fieldset><legend>Zpráva</legend><div class="form-grid"><label for="demo-message">Textová zpráva</label><textarea id="demo-message" rows="5" cols="35" placeholder="Napište zprávu…"></textarea></div></fieldset>
+				<fieldset><legend>Ukazatele a zakázaná skupina</legend><div class="form-grid">
+					<label for="demo-progress">Průběh (40 %)</label><progress id="demo-progress" value="40" max="100">40%</progress>
+					<label for="demo-meter">Ukazatel hodnoty</label><meter id="demo-meter" min="0" max="100" low="30" high="80" optimum="90" value="72">72 ze 100</meter>
+					<label for="demo-hidden">Skryté pole (hodnota example)</label><input id="demo-hidden" type="hidden" value="example"><span>Skryté pole se nezobrazuje.</span>
+				</div></fieldset>
+				<fieldset disabled><legend>Zakázaná skupina</legend><div class="form-grid"><label for="demo-disabled-group">Ukázkové zakázané pole</label><input id="demo-disabled-group" type="text" value="Nelze upravit"></div></fieldset>
+				<fieldset><legend>Tlačítka</legend><div class="buttons"><input type="submit" value="Odeslat (nefunkční)" disabled><input type="reset" value="Reset"><input type="button" value="Input button" disabled><button type="button" disabled>Button</button><button type="reset">Vymazat formulář</button><button type="submit" disabled>Odeslat ukázku</button></div><p>Odesílací tlačítka jsou z bezpečnostních důvodů neaktivní.</p></fieldset>
+			</form>
+		</section>
+	</main>
+	<footer class="footer">
+		<a href="https://validator.w3.org/nu/?doc=https://GITHUB_USERNAME.github.io/googlesearch/index.html" target="_blank" rel="noopener">Validace HTML</a>
+		<a href="https://jigsaw.w3.org/css-validator/validator?uri=https://GITHUB_USERNAME.github.io/googlesearch/index.html" target="_blank" rel="noopener">Validace CSS</a>
+		<a href="https://github.com/GITHUB_USERNAME/googlesearch/blob/main/citace.md" target="_blank" rel="noopener">Citace a zdroje</a>
+		<a href="PORTFOLIO_URL" target="_blank" rel="noopener">Portfolio</a><span>© 2026 JMENO_AUTORA</span>
+	</footer>
+</body>
+</html>
